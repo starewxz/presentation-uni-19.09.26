@@ -3,6 +3,11 @@ import { DECK_META, SLIDES as SLIDE_CONTENT, BIBLIOGRAPHY, type ContentSlideData
 
 const TOTAL_SLIDES = SLIDE_CONTENT.length + 2; // cover + content slides + bibliography
 
+/** Resolves a public/ asset path against the deployed base (e.g. GitHub Pages project subpath). */
+function withBase(path: string): string {
+  return `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+}
+
 /* ─── SVG ICONS — Kyivan Rus motifs ─── */
 type IconProps = { size?: number; color?: string; strokeWidth?: number };
 
@@ -572,7 +577,7 @@ const CRISIS_MOMENTS = [
     title: "Поразка на Альті",
     text: "Об’єднане військо Ярославичів зазнало розгрому. Кияни втратили довіру до Ізяслава й вигнали його з міста.",
     outcome: "Повстання киян і втеча Ізяслава",
-    image: "/images/battle-alta-1068.jpg",
+    image: withBase("images/battle-alta-1068.jpg"),
     imageAlt: "Мініатюра Радзивіллівського літопису із зображенням битви на річці Альті",
     sourceLabel: "Радзивіллівський літопис · public domain",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Radzvill_chronicle_battle.jpg",
@@ -584,7 +589,7 @@ const CRISIS_MOMENTS = [
     title: "Переворот у Києві",
     text: "Святослав і Всеволод усунули старшого брата. Київський престол став нагородою у династичній боротьбі.",
     outcome: "Кінець братнього союзу",
-    image: "/images/golden-gate-kyiv.jpg",
+    image: withBase("images/golden-gate-kyiv.jpg"),
     imageAlt: "Золоті ворота в Києві",
     sourceLabel: "Золоті ворота · George Chernilevsky · public domain",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Golden_Gate_Kiev_2018_G1.jpg",
@@ -596,7 +601,7 @@ const CRISIS_MOMENTS = [
     title: "Нежатина Нива",
     text: "У бою загинули Ізяслав і Борис Вячеславич. Усобиця довела, що старий порядок успадкування більше не стримує князів.",
     outcome: "Потреба нових правил спадкування",
-    image: "/images/nezhatina-niva-1078.jpg",
+    image: withBase("images/nezhatina-niva-1078.jpg"),
     imageAlt: "Мініатюра Радзивіллівського літопису про битву на Нежатиній Ниві",
     sourceLabel: "Радзивіллівський літопис · public domain",
     sourceUrl: "https://commons.wikimedia.org/wiki/File:Radzivill_chronicle_231.jpg",
